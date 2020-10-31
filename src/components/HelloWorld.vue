@@ -19,7 +19,7 @@
       <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
       <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
     </ul>
-    <h3>Ecosystem</h3>
+    <h3>Ecosystem Console: {{myConsole}}</h3>
     <ul>
       <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
       <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import styles from './HelloWorld.module.scss'
+  import styles from '@/components/HelloWorld.module.scss'
 export default {
   name: 'HelloWorld',
   props: {
@@ -43,8 +43,8 @@ export default {
     })
   },
   computed: {
-    getStyles: function () {
-      return this.styles
+    myConsole: function () {
+      return process.env.NODE_PATH === undefined
     }
   },
 }

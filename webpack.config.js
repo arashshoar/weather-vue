@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   module: {
     rules: [
@@ -9,6 +11,12 @@ module.exports = {
           'sass-loader'
         ]
       }
-    ]
+    ],
+    resolve: {
+      extensions: ['.js', '.vue', '.json', '.scss'],
+      alias: {
+        '@': path.resolve('src'),
+      }
+    },
   },
 }
