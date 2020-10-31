@@ -1,0 +1,26 @@
+
+/*
+*  Where are located all sass variables
+*  node_modules/bootstrap/scss/_variables.scss
+*/
+$xsBreakPoint: 400px;
+$smBreakPoint: 576px;
+$mdBreakPoint: 768px;
+$lgBreakPoint: 992px;
+$xlBreakPoint: 1200px;
+$xxlBreakPoint: 1250px;
+
+$searchListFontSize: 0.8rem;
+
+$sunYellow: rgba(255, 193, 7, 1);
+$sunYellowTransparency: rgba(255, 193, 7, 0.25);
+$portfolioIcon: #e8ae00;
+//this one is real blue
+$linksBlue: #a5d6ff;
+// this one is yellow for color consistency with my portfolio
+//$linksBlue: #b99128;
+
+//@font-face {
+//  font-family: ArashShoarHelveticaNeue;
+//  src: url('../../assets/fonts/HelveticaNeue-UltLt.otf');
+//}

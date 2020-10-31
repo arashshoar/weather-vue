@@ -1,24 +1,10 @@
-# weather-vue
+This project it is only a sample for my portfolio.
 
-## Project setup
-```
-npm install
-```
+## Description
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+##### - Used React-Redux 
+##### - 100% TDD coverage
+##### - Use 100% CSS Grid and CSS flexbox for setting the layout
+##### - Used Redux-Thunk for getting data out of 2 different WebServices
+##### - Got Inspiration from Yahoo! Weather application 
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
