@@ -1,0 +1,97 @@
+@import '@/utilities/design-utilities/sass-variables';
+
+.app {
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "currentTempContainer"
+    "componentsSetOne"
+    "componentsSetTwo"
+    "links"
+    "addSecondary";
+
+  .asideContainer {
+    grid-area: asideContainer;
+    display: none;
+  }
+
+  .currentTempContainer {
+    grid-area: currentTempContainer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+    border: solid 1px red;
+  }
+
+  .links {
+    grid-area: links;
+    border: solid 1px blue;
+  }
+
+  .componentsSetOne {
+    grid-area: componentsSetOne;
+    border: solid 1px darkgreen;
+  }
+
+  .componentsSetTwo {
+    grid-area: componentsSetTwo;
+    border: solid 1px orangered;
+  }
+
+  .addSecondary{
+    grid-area: addSecondary;
+    border: solid 1px maroon;
+  }
+
+  @media only screen and (min-width: $smBreakPoint ) {
+
+    .addSecondary {
+      display: none;
+    }
+  }
+
+  @media only screen and (min-width: $mdBreakPoint ) {
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+            "currentTempContainer currentTempContainer"
+            "links links"
+            "componentsSetOne componentsSetTwo"
+            "componentsSetOne componentsSetTwo"
+            "componentsSetOne componentsSetTwo";
+  }
+
+  @media only screen and (min-width: $xlBreakPoint ) {
+    min-width: 1200px;
+    grid-template-columns: 18% 41% 41%;
+    grid-template-areas:
+            "asideContainer currentTempContainer currentTempContainer"
+            "asideContainer links links"
+            "asideContainer componentsSetOne componentsSetTwo";
+
+    .asideContainer {
+      display: grid;
+    }
+
+    .links, .addSecondary {
+      display: none;
+    }
+
+  }
+
+  @media only screen and (min-width: $xxlBreakPoint ) {
+    width: 100%;
+    grid-template-columns: 15% 30% 30% 25%;
+    grid-template-areas:
+            "asideContainer currentTempContainer currentTempContainer currentTempContainer"
+            "asideContainer links links links"
+            "asideContainer componentsSetOne componentsSetTwo addSecondary";
+
+    .addSecondary {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

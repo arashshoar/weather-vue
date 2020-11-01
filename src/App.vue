@@ -1,18 +1,37 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="In The Name of GOD"/>
+  <div :class="styles.app" id="app">
+    <div :class="styles.asideContainer">
+        Aside
+    </div>
+    <div :class="styles.currentTempContainer">
+      In The Name of God
+      CurrentTemp
+    </div>
+    <div :class="styles.links">
+      Advertisement
+    </div>
+    <div :class="styles.addSecondary">
+      AdvertisementSecondary
+    </div>
+    <div :class="styles.componentsSetOne">
+      Wind
+    </div>
+    <div :class="styles.componentsSetTwo">
+      SunMoon
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import styles from './App.module.scss'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return ({
+      styles
+    })
+  },
 }
 </script>
 
