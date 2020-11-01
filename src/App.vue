@@ -4,8 +4,8 @@
         Aside
     </div>
     <div :class="styles.currentTempContainer">
-      In The Name of God
-      CurrentTemp
+
+      <CurrentTemp />
     </div>
     <div :class="styles.links">
       Advertisement
@@ -23,10 +23,14 @@
 </template>
 
 <script>
+import CurrentTemp from '@/components/CurrentTemp/CurrentTemp'
 import styles from './App.module.scss'
 
 export default {
   name: 'App',
+  components: {
+    CurrentTemp
+  },
   data() {
     return ({
       styles
