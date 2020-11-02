@@ -1,10 +1,14 @@
 <template>
   <div :class="styles.currentTemp">
-    In The Name of God
+    <div>In The Name of GOD</div>
+    <div>{{getCoords}}</div>
+
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+import { getUsersLocation } from '../../api/api'
 
 import styles from './CurrentTemp.module.scss'
 
@@ -14,6 +18,15 @@ export default ({
     return ({
       styles
     })
+  },
+  methods: {
+    ...mapActions(['getUsersCoords']),
+  },
+  computed: {
+    ...mapGetters(['getCoords'])
+  },
+  created() {
+    getUsersLocation(this.getUsersCoords)
   }
 })
 
