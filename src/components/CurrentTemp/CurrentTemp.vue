@@ -20,13 +20,13 @@ export default ({
     })
   },
   methods: {
-    ...mapActions(['getUsersCoords']),
+    ...mapActions(['setCoords', 'setMapData']),
   },
   computed: {
     ...mapGetters(['getCoords'])
   },
   created() {
-    getUsersLocation(this.getUsersCoords)
+    getUsersLocation(this.setCoords, this.setMapData)
   }
 })
 

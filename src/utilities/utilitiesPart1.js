@@ -9,4 +9,4 @@ export const getUserCurrentPosition = options => (
  * The "dispatchedAction" parameter it is already mapped to dispatch with in the related Component
  * So arashDispatch is just a reminder that we are dispatching an action
 */
-export const arashDispatch = dispatchedAction => dispatchedAction
+export const fakeDispatch = dispatchedAction => dispatchedAction

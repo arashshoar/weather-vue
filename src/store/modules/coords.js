@@ -7,13 +7,13 @@ const getters = {
 }
 
 export const actions = {
-  getUsersCoords: ({commit}, coords) => {
-    commit('setCoords', coords)
+  setCoords: ({commit}, coords) => {
+    commit('mutateCoords', coords)
   }
 }
 
 const mutations = {
-  setCoords: (state, coords) => state.coords = coords
+  mutateCoords: (state, coords) => state.coords = coords
 }
 
 export default {
