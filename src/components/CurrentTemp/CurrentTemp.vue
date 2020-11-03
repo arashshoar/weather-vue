@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'; //getLocationName
+import { mapActions, mapGetters } from 'vuex'
 import { getUsersLocation } from '../../api/api'
 import { getLocationName } from '../../utilities/utilitiesPart1'
 
@@ -22,16 +22,16 @@ export default ({
     })
   },
   methods: {
-    ...mapActions(['setCoords', 'setMapData']),
+    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData']),
   },
   computed: {
-    ...mapGetters(['getCoords', 'getMapData']),
+    ...mapGetters(['getCoords', 'getMapData', 'getCurrentWeatherData']),
     getLocationName() {
       return getLocationName(this.getMapData)
     }
   },
   created() {
-    getUsersLocation(this.setCoords, this.setMapData)
+    getUsersLocation(this.setCoords, this.setMapData, this.setCurrentWeatherData)
   }
 })
 

@@ -1,27 +1,8 @@
 import axios from 'axios'
 
-import { getUserCurrentPosition, fakeDispatch } from '@/utilities/utilitiesPart1'
-import { someCityCoords } from '@/utilities/constants.js'
-
-export const getUrl = ({ name, accessKey, locationName, token, coords, latitude, longitude }) => {
-
-  switch (name) {
-    case 'coordsQuery':
-      return `https://api.mapbox.com/geocoding/v5/mapbox.places/${coords}.json?access_token=${token}`
-    case 'locationNameQuery':
-      return `https://api.mapbox.com/geocoding/v5/mapbox.places/${locationName}.json?access_token=${token}`
-    case 'weatherQueryCurrent':
-      return `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${latitude}&lon=${longitude}&appid=${accessKey}`
-    case 'weatherQueryForecast':
-      return `https://api.openweathermap.org/data/2.5/onecall?units=imperial&lat=${latitude}&lon=${longitude}&exclude=minutely&appid=${accessKey}`
-    case 'googleMap':
-      return `https://maps.googleapis.com/maps/api/js?key=${accessKey}&callback=initMap`
-    default:
-      return `https://api.mapbox.com/geocoding/v5/mapbox.places/Los%20Angeles.json?access_token=${token}`
-  }
-}
-
-export const roundCoords = coords => coords.split(',').map(elem => Math.round(elem * 100)/100).join(',')
+import { getUserCurrentPosition, fakeDispatch, getUrl, getStoredData, getFreshWeatherData, roundCoords } from '../utilities/utilitiesPart1'
+import { someCityCoords } from '../utilities/constants.js'
+import { KEYS } from '../utilities/constants'
 
 export const fetchMapData = async ({ coords, locationName }) => {
   const storedLocationData = coords && JSON.parse(window.localStorage.getItem('storedLocationData' + roundCoords(coords)))
@@ -42,7 +23,23 @@ export const fetchMapData = async ({ coords, locationName }) => {
   return Promise.resolve(axiosTypeMapData)
 }
 
-export const getUsersLocation = async (setCoords, setMapData) => {
+export const isStoredDataFresh = storageTime => {
+  const date = new Date()
+  const sDate = new Date(Number(storageTime))
+
+  return date.getTime() - sDate.getTime() < 3600000
+}
+
+export const fetchWeather = (weatherQueryKey, storeKey, latitude, longitude) => {
+
+  const weatherData = getStoredData(storeKey, latitude, longitude)
+    ? getStoredData(storeKey, latitude, longitude)
+    : getFreshWeatherData(weatherQueryKey, storeKey, latitude, longitude)
+
+  return Promise.resolve(weatherData)
+}
+
+export const getUsersLocation = async (setCoords, setMapData, setCurrentWeatherData) => {
 
   let latitude, longitude
   try {
@@ -54,5 +51,7 @@ export const getUsersLocation = async (setCoords, setMapData) => {
     fakeDispatch(setCoords(`${longitude},${latitude}`))
     const mapData = await fetchMapData({coords: `${longitude},${latitude}`})
     fakeDispatch(setMapData(mapData.data))
+    const currentWeatherData = await fetchWeather(KEYS.weatherQueryCurrent, KEYS.storedCurrentWeatherData, latitude, longitude)
+    fakeDispatch(setCurrentWeatherData(currentWeatherData))
   }
 }
