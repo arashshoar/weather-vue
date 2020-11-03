@@ -1,5 +1,7 @@
 import axios from 'axios'
-import { getUserCurrentPosition, fakeDispatch } from '../utilities/utilitiesPart1'
+
+import { getUserCurrentPosition, fakeDispatch } from '@/utilities/utilitiesPart1'
+import { someCityCoords } from '@/utilities/constants.js'
 
 export const getUrl = ({ name, accessKey, locationName, token, coords, latitude, longitude }) => {
 
@@ -42,8 +44,15 @@ export const fetchMapData = async ({ coords, locationName }) => {
 
 export const getUsersLocation = async (setCoords, setMapData) => {
 
-  const { coords: { latitude, longitude } } = await getUserCurrentPosition()
-  fakeDispatch(setCoords(`${longitude},${latitude}`))
-  const mapData = await fetchMapData({coords: `${longitude},${latitude}`})
-  fakeDispatch(setMapData(mapData.data))
+  let latitude, longitude
+  try {
+    ({ coords: { latitude, longitude } } = await getUserCurrentPosition())
+  } catch (error) {
+    ([longitude, latitude] = someCityCoords.NewYork.split(','))
+    console.log('User denied to let us have access their location:', error)
+  } finally {
+    fakeDispatch(setCoords(`${longitude},${latitude}`))
+    const mapData = await fetchMapData({coords: `${longitude},${latitude}`})
+    fakeDispatch(setMapData(mapData.data))
+  }
 }

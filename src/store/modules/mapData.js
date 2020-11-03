@@ -1,5 +1,7 @@
+import { mapDataForAxios } from '@/utilities/test-utilities/mapDataForAxios.js'
+
 const state = {
-  mapData: ''
+  mapData: mapDataForAxios.data
 }
 
 const getters = {
