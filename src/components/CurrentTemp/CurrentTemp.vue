@@ -1,47 +1,8 @@
 <template>
   <div :class="styles.currentTemp">
-    <div>In The Name of GOD</div>
-    <div>LocationAndDate</div>
-
-
-
-
-    <div class="dropdown is-hoverable">
-      <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-          <span>Dropdown button</span>
-          <span class="icon is-small">
-        <i class="fas fa-angle-down" aria-hidden="true"></i>
-      </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <div class="dropdown-content">
-          <a href="#" class="dropdown-item">
-            Dropdown item
-          </a>
-          <a class="dropdown-item">
-            Other dropdown item
-          </a>
-          <a href="#" class="dropdown-item is-active">
-            Active dropdown item
-          </a>
-          <a href="#" class="dropdown-item">
-            Other dropdown item
-          </a>
-          <hr class="dropdown-divider">
-          <a href="#" class="dropdown-item">
-            With a divider
-          </a>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-    <div>DescriptionAndTemp</div>
+    <LocationAndDate></LocationAndDate>
+    <LocationList></LocationList>
+    <DescriptionAndTemp></DescriptionAndTemp>
   </div>
 </template>
 
@@ -50,10 +11,15 @@ import { mapActions, mapGetters } from 'vuex'
 import { getUsersLocation } from '../../api/api'
 import { getLocationName, getDateFromMilSeconds, getTimeFromMilliSeconds, getDesOfWeather } from '../../utilities/utilitiesPart1'
 
+import LocationAndDate from './LocationAndDate/LocationAndDate'
+import LocationList from './LocationList/LocationList'
+import DescriptionAndTemp from './DescriptionAndTemp/DescriptionAndTemp'
+
 import styles from './CurrentTemp.module.scss'
 
 export default ({
   name: 'CurrentTemp',
+  components: { LocationAndDate, LocationList, DescriptionAndTemp },
   data() {
     return ({
       styles

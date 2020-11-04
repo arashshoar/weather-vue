@@ -5,7 +5,7 @@
     </div>
     <div :class="styles.currentTempContainer">
 
-      <CurrentTemp />
+      <CurrentTemp></CurrentTemp>
     </div>
     <div :class="styles.links">
       Advertisement

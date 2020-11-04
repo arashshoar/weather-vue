@@ -1,12 +1,12 @@
 <template>
-  <div>
-
+  <div class="dropdown is-hoverable">
+    Location List Component
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'LocationList',
 }
 </script>
 
