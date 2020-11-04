@@ -23,13 +23,6 @@ export const fetchMapData = async ({ coords, locationName }) => {
   return Promise.resolve(axiosTypeMapData)
 }
 
-export const isStoredDataFresh = storageTime => {
-  const date = new Date()
-  const sDate = new Date(Number(storageTime))
-
-  return date.getTime() - sDate.getTime() < 3600000
-}
-
 export const fetchWeather = (weatherQueryKey, storeKey, latitude, longitude) => {
 
   const weatherData = getStoredData(storeKey, latitude, longitude)

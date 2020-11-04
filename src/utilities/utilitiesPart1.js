@@ -1,4 +1,4 @@
-import axios, { isStoredDataFresh } from '../api/api'
+import axios from 'axios'
 
 export const getUserCurrentPosition = options => (
   new Promise(function (resolve, reject) {
@@ -75,6 +75,13 @@ const getRoundLatLng = (latitude, longitude) => {
   return ({ roundLat, roundLng })
 }
 
+export const isStoredDataFresh = storageTime => {
+  const date = new Date()
+  const sDate = new Date(Number(storageTime))
+
+  return date.getTime() - sDate.getTime() < 3600000
+}
+
 export const getStoredData = (storeKey, latitude, longitude) => {
   const { roundLat, roundLng } = getRoundLatLng(latitude, longitude)
   const storedCurrentWeatherData = JSON.parse(window.localStorage.getItem(storeKey + roundLat + roundLng))
@@ -97,3 +104,31 @@ export const getFreshWeatherData = async (weatherQueryKey, storeKey, latitude, l
 
   return data.data
 }
+
+export const getDateFromMilSeconds = (milli, timeZone) => {
+  if (!milli) {
+    return 'loading'
+  }
+
+  const date = new Date(Number(milli + '000') + Number(timeZone + '000'))
+  const [ , month, day] = date.toISOString().split('T')[0].split('-')
+  return `${month[0] === '0' ? month.substr(1) : month}/${day[0] === '0' ? day.substr(1) : day }`
+}
+
+export const getTimeFromMilliSeconds = (milli, timeZone) => {
+  if (!milli) {
+    return 'loading'
+  }
+
+  const date = new Date(Number(milli + '000') + Number(timeZone + '000'))
+  const time = date.toISOString().split('T')[1].split(':')
+  return `${time[0][0] === '0' ? time[0].substr(1) : time[0]}:${time[1]}`
+}
+
+export const joinDesOfWeather = weather => weather.reduce(
+  (wholeDesc, weather) => (`${wholeDesc} ${weather.description}`), ''
+)
+
+export const firstLetterUp = str => str[1].toUpperCase() + str.substr(2).toLocaleLowerCase()
+
+export const getDesOfWeather = weather => firstLetterUp(joinDesOfWeather(weather))
