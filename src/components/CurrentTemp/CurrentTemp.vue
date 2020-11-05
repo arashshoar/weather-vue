@@ -2,15 +2,20 @@
   <div :class="styles.currentTemp">
     <div :class="styles.tempHeader">
       <LocationAndDate
-          :cityName="currentTempState.cityName"
-          :countryName="currentTempState.countryName"
-          :date="currentTempState.date"
-          :time="currentTempState.placeTime"
+        :cityName="currentTempState.cityName"
+        :countryName="currentTempState.countryName"
+        :date="currentTempState.date"
+        :time="currentTempState.placeTime"
       >
       </LocationAndDate>
       <LocationList></LocationList>
     </div>
-    <DescriptionAndTemp></DescriptionAndTemp>
+    <DescriptionAndTemp
+      :description="currentTempState.description"
+      :maxTemp="currentTempState.maxTemp"
+      :minTemp="currentTempState.minTemp"
+      :currentTemp="currentTempState.currentTemp"
+    ></DescriptionAndTemp>
   </div>
 </template>
 
@@ -53,9 +58,9 @@ export default ({
       return {
         cityName,
         countryName,
-        currentTemp,
-        minTemp,
         maxTemp,
+        minTemp,
+        currentTemp,
         date,
         placeTime,
         description
