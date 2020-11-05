@@ -16,6 +16,8 @@
       :minTemp="currentTempState.minTemp"
       :currentTemp="currentTempState.currentTemp"
       :isDay="currentTempState.isDay"
+      :unitFC="currentTempState.unitFC"
+      :setUnitFC="currentTempState.setUnitFC"
       :descriptionFirst="currentTempState.descriptionFirst"
     ></DescriptionAndTemp>
   </div>
@@ -77,7 +79,8 @@ export default ({
         description,
         isDay,
         descriptionFirst: weather[0].description,
-        unitFC
+        unitFC,
+        setUnitFC: this.setUnitFC
       }
     }
   },

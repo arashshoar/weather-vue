@@ -15,8 +15,18 @@
     <div :class="styles.tempAndUnits">
       <div :class="styles.temp">{{currentTemp}}&deg;</div>
       <div :class="styles.units">
-        <div :class="`${styles.celc} ${styles.notCurrent}`">C</div>
-        <div :class="styles.faren">F</div>
+        <div
+            :class="`${styles.celc} ${unitFC === 'f' && styles.notCurrent}`"
+            @click="setUnitFCMethod"
+        >
+          C
+        </div>
+        <div
+            :class="`${styles.faren} ${unitFC === 'c' && styles.notCurrent}`"
+            @click="setUnitFCMethod"
+        >
+          F
+        </div>
       </div>
     </div>
   </div>
@@ -36,13 +46,23 @@ export default {
       styles
     }
   },
-  props: ['description', 'maxTemp', 'minTemp', 'currentTemp', 'isDay'],
+  props: ['description', 'maxTemp', 'minTemp', 'currentTemp', 'isDay', 'unitFC', 'setUnitFC'],
   computed: {
     getWeatherIcon() {
       return getWeatherIcon(this.description, this.isDay)
     }
   },
-  created() {
+  methods: {
+    setUnitFCMethod() {
+      if (this.unitFC === 'f') {
+        this.setUnitFC('c')
+      } else {
+        this.setUnitFC('f')
+      }
+    }
+  },
+  updated() {
+    console.log('In mounted: ', this.unitFC)
     if (this.unitFC && this.unitFC !== 'initial') {
       window.localStorage.setItem('storedUnitFC', this.unitFC)
     }
