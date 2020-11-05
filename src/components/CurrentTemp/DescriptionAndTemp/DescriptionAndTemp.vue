@@ -5,10 +5,10 @@
       <div>{{description}}</div>
     </div>
 
-    <div>
-<!--      <UpArrowIcon/>-->
+    <div :class="styles.minMax">
+      <UpArrowIcon></UpArrowIcon>
       <span>{{maxTemp}}&deg;</span>
-<!--      <DownArrowIcon/>-->
+      <DownArrowIcon></DownArrowIcon>
       <span>{{minTemp}}&deg;</span>
     </div>
 
@@ -25,9 +25,12 @@
 <script>
 import styles from './DescriptionAndTemp.module.scss'
 import { getWeatherIcon } from '../../../utilities/utilitiesPart1'
+import UpArrowIcon from '../../common/UpArrowIcon'
+import DownArrowIcon from '../../common/DownArrowIcon'
 
 export default {
   name: 'DescriptionAndTemp',
+  components: {DownArrowIcon, UpArrowIcon},
   data() {
     return {
       styles

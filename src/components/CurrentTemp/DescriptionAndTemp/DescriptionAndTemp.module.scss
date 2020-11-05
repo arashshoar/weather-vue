@@ -18,6 +18,10 @@ $currentTempBase: 1rem;
     }
   }
 
+  .minMax {
+    display: flex;
+  }
+
   .tempAndUnits {
     display: flex;
     align-items: flex-end;
