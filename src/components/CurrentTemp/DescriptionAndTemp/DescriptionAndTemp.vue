@@ -19,7 +19,6 @@
         <div :class="styles.faren">F</div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -40,10 +39,10 @@ export default {
       return getWeatherIcon(this.description, this.isDay)
     }
   },
+  created() {
+    if (this.unitFC && this.unitFC !== 'initial') {
+      window.localStorage.setItem('storedUnitFC', this.unitFC)
+    }
+  },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-
-</style>

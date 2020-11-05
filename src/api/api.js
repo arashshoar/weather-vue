@@ -32,7 +32,15 @@ export const fetchWeather = (weatherQueryKey, storeKey, latitude, longitude) => 
   return Promise.resolve(weatherData)
 }
 
-export const getUsersLocation = async (setCoords, setMapData, setCurrentWeatherData) => {
+const checkForStoredUnit = setUnitFC => {
+  const storedUnitFC = window.localStorage.getItem('storedUnitFC')
+
+  if (storedUnitFC !== 'undefined' && storedUnitFC) {
+    fakeDispatch(setUnitFC(storedUnitFC))
+  }
+}
+
+export const getUsersLocation = async (setCoords, setMapData, setCurrentWeatherData, setUnitFC) => {
 
   let latitude, longitude
   try {
@@ -41,6 +49,8 @@ export const getUsersLocation = async (setCoords, setMapData, setCurrentWeatherD
     ([longitude, latitude] = someCityCoords.NewYork.split(','))
     console.log('User denied to let us have access their location:', error)
   } finally {
+
+    checkForStoredUnit(setUnitFC)
     fakeDispatch(setCoords(`${longitude},${latitude}`))
     const mapData = await fetchMapData({coords: `${longitude},${latitude}`})
     fakeDispatch(setMapData(mapData.data))

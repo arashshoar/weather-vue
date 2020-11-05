@@ -47,10 +47,10 @@ export default ({
     })
   },
   methods: {
-    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData']),
+    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setUnitFC']),
   },
   computed: {
-    ...mapGetters(['getCoords', 'getMapData', 'getCurrentWeatherData']),
+    ...mapGetters(['getCoords', 'getMapData', 'getCurrentWeatherData', 'getUnitFC']),
     currentTempState () {
       const { cityName, countryName } = getLocationName(this.getMapData)
       const {
@@ -60,6 +60,7 @@ export default ({
         main: { temp: currentTemp, temp_min: minTemp, temp_max: maxTemp },
         sys: { sunrise: sunRise, sunset: sunSet },
       } = this.getCurrentWeatherData
+      const unitFC = this.getUnitFC
       const date = getDateFromMilSeconds(dt, timeZone)
       const placeTime = getTimeFromMilliSeconds(dt, timeZone)
       const description = getDesOfWeather(weather)
@@ -75,12 +76,13 @@ export default ({
         placeTime,
         description,
         isDay,
-        descriptionFirst: weather[0].description
+        descriptionFirst: weather[0].description,
+        unitFC
       }
     }
   },
   created() {
-    getUsersLocation(this.setCoords, this.setMapData, this.setCurrentWeatherData)
+    getUsersLocation(this.setCoords, this.setMapData, this.setCurrentWeatherData, this.setUnitFC)
   }
 })
 
