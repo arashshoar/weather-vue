@@ -1,13 +1,16 @@
 <template>
   <div>
     <div>In The Name of GOD</div>
-    <div>LocationAndDate</div>
+    <div>{{cityName}}</div>
+    <div>{{countryName}}</div>
+    <div>{{date}}, {{time}}</div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'LocationAndDate',
+  props: ['cityName', 'countryName', 'date', 'time'],
 }
 </script>
 

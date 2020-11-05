@@ -1,7 +1,15 @@
 <template>
   <div :class="styles.currentTemp">
-    <LocationAndDate></LocationAndDate>
-    <LocationList></LocationList>
+    <div :class="styles.tempHeader">
+      <LocationAndDate
+          :cityName="currentTempState.cityName"
+          :countryName="currentTempState.countryName"
+          :date="currentTempState.date"
+          :time="currentTempState.placeTime"
+      >
+      </LocationAndDate>
+      <LocationList></LocationList>
+    </div>
     <DescriptionAndTemp></DescriptionAndTemp>
   </div>
 </template>
@@ -22,7 +30,7 @@ export default ({
   components: { LocationAndDate, LocationList, DescriptionAndTemp },
   data() {
     return ({
-      styles
+      styles,
     })
   },
   methods: {
