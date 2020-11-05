@@ -1,7 +1,7 @@
 <template>
   <div :class="styles.descriptionAndTemp">
     <div :class="styles.description">
-      <img src="https://s.yimg.com/os/weather/1.0.1/shadow_icon/60x60/clear_day@2x.png" alt=""/>
+      <img :src="getWeatherIcon" alt=""/>
       <div>{{description}}</div>
     </div>
 
@@ -25,6 +25,7 @@
 
 <script>
 import styles from './DescriptionAndTemp.module.scss'
+import { getWeatherIcon } from '../../../utilities/utilitiesPart1'
 
 export default {
   name: 'DescriptionAndTemp',
@@ -33,7 +34,12 @@ export default {
       styles
     }
   },
-  props: ['description', 'maxTemp', 'minTemp', 'currentTemp'],
+  props: ['description', 'maxTemp', 'minTemp', 'currentTemp', 'isDay'],
+  computed: {
+    getWeatherIcon() {
+      return getWeatherIcon(this.description, this.isDay)
+    }
+  },
 }
 </script>
 

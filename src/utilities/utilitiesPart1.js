@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { SRC } from './constants'
 
 export const getUserCurrentPosition = options => (
   new Promise(function (resolve, reject) {
@@ -132,3 +133,62 @@ export const joinDesOfWeather = weather => weather.reduce(
 export const firstLetterUp = str => str[1].toUpperCase() + str.substr(2).toLocaleLowerCase()
 
 export const getDesOfWeather = weather => firstLetterUp(joinDesOfWeather(weather))
+
+export const getIfItIsDay = (sunRise, sunSet, dt) => dt >= sunRise && dt < sunSet
+
+export const getWeatherIcon = (description, isDay) => {
+  description = description.toLowerCase()
+
+  switch (true) {
+    case (description === 'clear sky' && isDay):
+      return SRC.clearDayIcon
+    case (description === 'clear sky' && !isDay):
+      return SRC.clearNightIcon
+    case (description === 'few clouds' && isDay):
+      return SRC.fewCloudsDayIcon
+    case (description === 'few clouds' && !isDay):
+      return SRC.fewCloudsNightIcon
+    case (description === 'fog'):
+      return SRC.mostlyCloudyDayNight
+    case (description === 'mist'):
+      return SRC.mostlyCloudyDayNight
+    case (description === 'scattered clouds'):
+      return SRC.scatteredClouds
+    case (description === 'broken clouds'):
+      return SRC.scatteredClouds
+    case (description === 'overcast clouds'):
+      return SRC.overcastClouds
+    case (description === 'light rain'):
+      return SRC.lightRain
+    case (description === 'moderate rain'):
+      return SRC.lightRain
+    case (description === 'heavy intensity rain'):
+      return SRC.heavyIntensityRain
+    case (description === 'very heavy rain'):
+      return SRC.heavyIntensityRain
+    case (description === 'extreme rain'):
+      return SRC.heavyIntensityRain
+    case (description === 'freezing rain'):
+      return SRC.lightRainAndSnow
+    case (description === 'light intensity shower rain'):
+      return SRC.heavyIntensityRain
+    case (description === 'shower rain'):
+      return SRC.heavyIntensityRain
+    case (description === 'heavy intensity shower rain'):
+      return SRC.heavyIntensityRain
+    case (description === 'ragged shower rain'):
+      return SRC.heavyIntensityRain
+    case (description.includes('thunderstorm')):
+      return SRC.thunderstorm
+    case (description.includes('drizzle')):
+      return SRC.lightRain
+    case (description === 'light rain and snow'):
+      return SRC.lightRainAndSnow
+    case (description === 'rain and snow'):
+      return SRC.lightRainAndSnow
+    case (description.includes('snow')):
+      return SRC.snow
+    default:
+      return SRC.clearDayIcon
+  }
+}

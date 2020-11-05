@@ -15,6 +15,8 @@
       :maxTemp="currentTempState.maxTemp"
       :minTemp="currentTempState.minTemp"
       :currentTemp="currentTempState.currentTemp"
+      :isDay="currentTempState.isDay"
+      :descriptionFirst="currentTempState.descriptionFirst"
     ></DescriptionAndTemp>
   </div>
 </template>
@@ -22,7 +24,13 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { getUsersLocation } from '../../api/api'
-import { getLocationName, getDateFromMilSeconds, getTimeFromMilliSeconds, getDesOfWeather } from '../../utilities/utilitiesPart1'
+import {
+  getLocationName,
+  getDateFromMilSeconds,
+  getTimeFromMilliSeconds,
+  getDesOfWeather,
+  getIfItIsDay
+} from '../../utilities/utilitiesPart1'
 
 import LocationAndDate from './LocationAndDate/LocationAndDate'
 import LocationList from './LocationList/LocationList'
@@ -49,11 +57,13 @@ export default ({
         dt,
         timezone: timeZone,
         weather,
-        main: { temp: currentTemp, temp_min: minTemp, temp_max: maxTemp }
+        main: { temp: currentTemp, temp_min: minTemp, temp_max: maxTemp },
+        sys: { sunrise: sunRise, sunset: sunSet },
       } = this.getCurrentWeatherData
       const date = getDateFromMilSeconds(dt, timeZone)
       const placeTime = getTimeFromMilliSeconds(dt, timeZone)
       const description = getDesOfWeather(weather)
+      const isDay = getIfItIsDay(sunRise, sunSet, dt)
 
       return {
         cityName,
@@ -63,7 +73,9 @@ export default ({
         currentTemp,
         date,
         placeTime,
-        description
+        description,
+        isDay,
+        descriptionFirst: weather[0].description
       }
     }
   },
