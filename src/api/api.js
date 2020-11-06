@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { getUserCurrentPosition, fakeDispatch, getUrl, getStoredData, getFreshWeatherData, roundCoords } from '../utilities/utilitiesPart1'
+import { getUserCurrentPosition, fakeDispatch, getUrl, getStoredData, getFreshWeatherData, roundCoords, getCityCountry } from '../utilities/utilitiesPart1'
 import { someCityCoords } from '../utilities/constants.js'
 import { KEYS } from '../utilities/constants'
 
@@ -40,7 +40,17 @@ const checkForStoredUnit = setUnitFC => {
   }
 }
 
-export const getUsersLocation = async (setCoords, setMapData, setCurrentWeatherData, setUnitFC) => {
+export const getWholeData = async (latitude, longitude, setCoords, setMapData, setCurrentWeatherData, setLocationName) => {
+
+  fakeDispatch(setCoords(`${longitude},${latitude}`))
+  const { data: mapData } = await fetchMapData({coords: `${longitude},${latitude}`})
+  fakeDispatch(setMapData(mapData))
+  fakeDispatch(setLocationName(getCityCountry(mapData)))
+  const currentWeatherData = await fetchWeather(KEYS.weatherQueryCurrent, KEYS.storedCurrentWeatherData, latitude, longitude)
+  fakeDispatch(setCurrentWeatherData(currentWeatherData))
+}
+
+export const getUsersLocation = async (setCoords, setMapData, setCurrentWeatherData, setUnitFC, setLocationName) => {
 
   let latitude, longitude
   try {
@@ -51,10 +61,6 @@ export const getUsersLocation = async (setCoords, setMapData, setCurrentWeatherD
   } finally {
 
     checkForStoredUnit(setUnitFC)
-    fakeDispatch(setCoords(`${longitude},${latitude}`))
-    const mapData = await fetchMapData({coords: `${longitude},${latitude}`})
-    fakeDispatch(setMapData(mapData.data))
-    const currentWeatherData = await fetchWeather(KEYS.weatherQueryCurrent, KEYS.storedCurrentWeatherData, latitude, longitude)
-    fakeDispatch(setCurrentWeatherData(currentWeatherData))
+    getWholeData(latitude, longitude, setCoords, setMapData, setCurrentWeatherData, setLocationName)
   }
 }

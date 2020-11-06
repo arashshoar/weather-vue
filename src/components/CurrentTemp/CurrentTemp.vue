@@ -27,7 +27,6 @@
 import { mapActions, mapGetters } from 'vuex'
 import { getUsersLocation } from '../../api/api'
 import {
-  getLocationName,
   getDateFromMilSeconds,
   getTimeFromMilliSeconds,
   getDesOfWeather,
@@ -49,12 +48,12 @@ export default ({
     })
   },
   methods: {
-    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setUnitFC']),
+    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setUnitFC', 'setLocationName']),
   },
   computed: {
-    ...mapGetters(['getCoords', 'getMapData', 'getCurrentWeatherData', 'getUnitFC']),
+    ...mapGetters(['getCoords', 'getMapData', 'getCurrentWeatherData', 'getUnitFC', 'getLocationName']),
     currentTempState () {
-      const { cityName, countryName } = getLocationName(this.getMapData)
+      const { cityName, countryName } = this.getLocationName
       const {
         dt,
         timezone: timeZone,
@@ -85,7 +84,7 @@ export default ({
     }
   },
   created() {
-    getUsersLocation(this.setCoords, this.setMapData, this.setCurrentWeatherData, this.setUnitFC)
+    getUsersLocation(this.setCoords, this.setMapData, this.setCurrentWeatherData, this.setUnitFC, this.setLocationName)
   }
 })
 

@@ -34,7 +34,7 @@ export const getUrl = ({ name, accessKey, locationName, token, coords, latitude,
   }
 }
 
-export const getLocationName = mapData => {
+export const getCityCountry = mapData => {
   const { features: places } = mapData
   let cityName
   let countryName
