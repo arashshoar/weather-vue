@@ -7,13 +7,13 @@
 
     <div :class="styles.minMax">
       <UpArrowIcon></UpArrowIcon>
-      <span>{{maxTemp}}&deg;</span>
+      <span>{{getTempComputed.maxTemp}}</span>
       <DownArrowIcon></DownArrowIcon>
-      <span>{{minTemp}}&deg;</span>
+      <span>{{getTempComputed.minTemp}}</span>
     </div>
 
     <div :class="styles.tempAndUnits">
-      <div :class="styles.temp">{{currentTemp}}&deg;</div>
+      <div :class="styles.temp">{{getTempComputed.currentTemp}}</div>
       <div :class="styles.units">
         <div
             :class="`${styles.celc} ${unitFC === 'f' && styles.notCurrent}`"
@@ -34,7 +34,7 @@
 
 <script>
 import styles from './DescriptionAndTemp.module.scss'
-import { getWeatherIcon } from '../../../utilities/utilitiesPart1'
+import { getTemp, getWeatherIcon } from '../../../utilities/utilitiesPart1'
 import UpArrowIcon from '../../common/UpArrowIcon'
 import DownArrowIcon from '../../common/DownArrowIcon'
 
@@ -50,7 +50,14 @@ export default {
   computed: {
     getWeatherIcon() {
       return getWeatherIcon(this.description, this.isDay)
-    }
+    },
+    getTempComputed() {
+      return {
+        currentTemp: getTemp(this.unitFC, this.currentTemp),
+        minTemp: getTemp(this.unitFC, this.maxTemp),
+        maxTemp: getTemp(this.unitFC, this.minTemp),
+      }
+    },
   },
   methods: {
     setUnitFCMethod() {
@@ -62,7 +69,6 @@ export default {
     }
   },
   updated() {
-    console.log('In mounted: ', this.unitFC)
     if (this.unitFC && this.unitFC !== 'initial') {
       window.localStorage.setItem('storedUnitFC', this.unitFC)
     }

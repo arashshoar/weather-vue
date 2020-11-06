@@ -192,3 +192,7 @@ export const getWeatherIcon = (description, isDay) => {
       return SRC.clearDayIcon
   }
 }
+
+export const farenheitToCelcius = fTemp => Math.round((fTemp - 32) * (5/9))
+
+export const getTemp = (unitFC, fTemp) => unitFC === 'f' ? Math.round(fTemp) : farenheitToCelcius(fTemp)

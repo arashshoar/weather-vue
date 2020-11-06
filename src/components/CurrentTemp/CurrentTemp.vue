@@ -31,7 +31,7 @@ import {
   getDateFromMilSeconds,
   getTimeFromMilliSeconds,
   getDesOfWeather,
-  getIfItIsDay
+  getIfItIsDay,
 } from '../../utilities/utilitiesPart1'
 
 import LocationAndDate from './LocationAndDate/LocationAndDate'
