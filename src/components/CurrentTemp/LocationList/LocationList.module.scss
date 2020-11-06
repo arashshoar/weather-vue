@@ -1,0 +1,38 @@
+@import "@/utilities/design-utilities/sass-variables.scss";
+
+.locationList {
+
+  .dropButton {
+    box-shadow: 1px 1px 2px black;
+    text-shadow: 1px 1px 2px black;
+    color: #ffd333;
+    font-size: $searchListFontSize;
+    max-width: 280px;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropButton:hover {
+    text-shadow: none;
+  }
+
+  .dropdownMenuLinks {
+    text-shadow: none;
+    padding-right: 3px;
+    padding-left: 3px;
+    max-width: 280px;
+    overflow: hidden;
+  }
+
+  @media only screen and (min-width: $xsBreakPoint) {
+    min-width: 300px;
+
+    .dropdownMenuLinks {
+      max-width: initial;
+    }
+  }
+
+  @media only screen and (min-width: $xlBreakPoint) {
+    padding-top: 45px;
+  }
+}
