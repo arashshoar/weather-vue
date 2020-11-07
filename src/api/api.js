@@ -40,7 +40,7 @@ const checkForStoredUnit = setUnitFC => {
   }
 }
 
-export const getWholeData = async (latitude, longitude, setCoords, setMapData, setCurrentWeatherData, setLocationName) => {
+export const getWholeData = async ({ latitude, longitude, setCoords, setMapData, setCurrentWeatherData, setLocationName } = {}) => {
 
   fakeDispatch(setCoords(`${longitude},${latitude}`))
   const { data: mapData } = await fetchMapData({coords: `${longitude},${latitude}`})
@@ -50,7 +50,13 @@ export const getWholeData = async (latitude, longitude, setCoords, setMapData, s
   fakeDispatch(setCurrentWeatherData(currentWeatherData))
 }
 
-export const getUsersLocation = async (setCoords, setMapData, setCurrentWeatherData, setUnitFC, setLocationName) => {
+export const getUsersLocation = async ({
+  setCoords,
+  setMapData,
+  setCurrentWeatherData,
+  setUnitFC,
+  setLocationName
+} = {}) => {
 
   let latitude, longitude
   try {
@@ -61,6 +67,13 @@ export const getUsersLocation = async (setCoords, setMapData, setCurrentWeatherD
   } finally {
 
     checkForStoredUnit(setUnitFC)
-    getWholeData(latitude, longitude, setCoords, setMapData, setCurrentWeatherData, setLocationName)
+    getWholeData({
+      latitude,
+      longitude,
+      setCoords,
+      setMapData,
+      setCurrentWeatherData,
+      setLocationName,
+    })
   }
 }

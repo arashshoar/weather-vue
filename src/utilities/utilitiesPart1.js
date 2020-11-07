@@ -196,3 +196,26 @@ export const getWeatherIcon = (description, isDay) => {
 export const farenheitToCelcius = fTemp => Math.round((fTemp - 32) * (5/9))
 
 export const getTemp = (unitFC, fTemp) => unitFC === 'f' ? Math.round(fTemp) : farenheitToCelcius(fTemp)
+
+export const getPlaceDescription = placeName => {
+  const placeNameArr = placeName.split(',')
+  const placeNameLastIndex = placeNameArr.length - 1
+
+  return placeNameArr[placeNameLastIndex]
+}
+
+export const getLatLngFromCoords = coords => {
+  if (typeof (coords) === 'string') {
+    return ({
+      latitude: Number(coords.split(',')[1]),
+      longitude: Number(coords.split(',')[0]),
+    })
+  }
+
+  if (Array.isArray(coords)) {
+    return ({
+      latitude: coords[1],
+      longitude: coords[0]
+    })
+  }
+}

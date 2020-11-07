@@ -84,7 +84,14 @@ export default ({
     }
   },
   created() {
-    getUsersLocation(this.setCoords, this.setMapData, this.setCurrentWeatherData, this.setUnitFC, this.setLocationName)
+
+    getUsersLocation({
+      setCoords: this.setCoords,
+      setMapData: this.setMapData,
+      setCurrentWeatherData: this.setCurrentWeatherData,
+      setUnitFC: this.setUnitFC,
+      setLocationName: this.setLocationName
+    })
   }
 })
 

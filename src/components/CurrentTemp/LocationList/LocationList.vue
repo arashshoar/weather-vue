@@ -9,18 +9,29 @@
       aria-expanded="false"
     >
       <LocationIcon></LocationIcon>
-      Dropdown button
+      <span>Change Location</span>
     </button>
     <div :class="`dropdown-menu ${styles.dropdownMenuLinks}`" aria-labelledby="dropdownMenuButton">
       <location-input></location-input>
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <a
+        class="dropdown-item"
+        href="#"
+        v-for="(place) in getPlaces"
+        :key="place.id"
+        @click="event => handleChangeLocationList(event, place.center)"
+      >
+        {{`${place.text}, ${getPlaceDescriptionMethod(place.place_name)}`}}
+      </a>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
+
+import { getWholeData } from '../../../api/api'
+import { getPlaceDescription, getLatLngFromCoords } from '../../../utilities/utilitiesPart1'
 import LocationInput from '../../../components/common/LocationInput/LocationInput'
 import LocationIcon from '../../../components/common/LocationIcon/LocationIcon'
 
@@ -33,6 +44,30 @@ export default {
       styles
     }
   },
-  components: { LocationInput, LocationIcon }
+  components: { LocationInput, LocationIcon },
+  methods: {
+    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setLocationName']),
+    getPlaceDescriptionMethod(placeName) {
+      return getPlaceDescription(placeName)
+    },
+    handleChangeLocationList(event, coords) {
+      event.preventDefault()
+      const { latitude, longitude } = getLatLngFromCoords(coords)
+      getWholeData({
+        latitude,
+        longitude,
+        setCoords: this.setCoords,
+        setMapData: this.setMapData,
+        setCurrentWeatherData: this.setCurrentWeatherData,
+        setLocationName: this.setLocationName,
+      })
+    }
+  },
+  computed: {
+    ...mapGetters(['getMapData']),
+    getPlaces() {
+      return this.getMapData.features
+    }
+  },
 }
 </script>
