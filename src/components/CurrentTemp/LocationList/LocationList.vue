@@ -13,15 +13,17 @@
     </button>
     <div :class="`dropdown-menu ${styles.dropdownMenuLinks}`" aria-labelledby="dropdownMenuButton">
       <location-input></location-input>
-      <a
-        class="dropdown-item"
-        href="#"
-        v-for="(place) in getPlaces"
-        :key="place.id"
-        @click="event => handleChangeLocationList(event, place.center)"
-      >
-        {{`${place.text}, ${getPlaceDescriptionMethod(place.place_name)}`}}
-      </a>
+      <div @click="handleChangeLocationList">
+        <a
+          class="dropdown-item"
+          href="#"
+          v-for="(place) in getPlaces"
+          :key="place.id"
+          :data-coords="place.center"
+        >
+          {{`${place.text}, ${getPlaceDescriptionMethod(place.place_name)}`}}
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -50,8 +52,10 @@ export default {
     getPlaceDescriptionMethod(placeName) {
       return getPlaceDescription(placeName)
     },
-    handleChangeLocationList(event, coords) {
+    handleChangeLocationList(event) {
       event.preventDefault()
+      const coords = event.target.dataset.coords
+      console.log('Coords: ', coords)
       const { latitude, longitude } = getLatLngFromCoords(coords)
       getWholeData({
         latitude,

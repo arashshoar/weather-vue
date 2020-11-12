@@ -31,6 +31,7 @@ import {
   getTimeFromMilliSeconds,
   getDesOfWeather,
   getIfItIsDay,
+  getApplicationBackground,
 } from '../../utilities/utilitiesPart1'
 
 import LocationAndDate from './LocationAndDate/LocationAndDate'
@@ -92,6 +93,8 @@ export default ({
       setUnitFC: this.setUnitFC,
       setLocationName: this.setLocationName
     })
+
+    getApplicationBackground()
   }
 })
 
