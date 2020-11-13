@@ -1,7 +1,7 @@
 import LocationIcon from '../LocationIcon'
 import { mount } from '@vue/test-utils'
 
-describe("HelloWorld.vue", () => {
+describe("When we are testing LocationIcon component", () => {
 
   const wrapper = mount(LocationIcon, {
     propsData: {
@@ -9,9 +9,9 @@ describe("HelloWorld.vue", () => {
     }
   })
 
-  it("renders props.msg when passed", () => {
-    expect(wrapper.html()).toMatchSnapshot()
+  it("Has to have proper structure", () => {
     expect(wrapper.findAll('svg')).toHaveLength(1)
+    expect(wrapper.findAll('path')).toHaveLength(1)
     expect(wrapper.html().includes('class="locationIcon"')).toBe(true)
   });
 });

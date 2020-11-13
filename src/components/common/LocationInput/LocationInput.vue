@@ -1,16 +1,16 @@
 <template>
   <div :class="`input-group md-3 ${styles.locationInput}`">
     <input
-        type="text"
-        class="form-control"
-        v-model="locationNameInput"
-        @keydown.enter="handleKeyDown"
+      v-model="locationNameInput"
+      type="text"
+      class="form-control"
+      @keydown.enter="handleKeyDown"
     />
     <div class="input-group-append">
       <button
-          class="input-group-append btn btn-outline-secondary"
-          type="button"
-          @click="handleSearchButtonClick"
+        class="input-group-append btn btn-outline-secondary"
+        type="button"
+        @click="handleSearchButtonClick"
       >
         Search
       </button>
