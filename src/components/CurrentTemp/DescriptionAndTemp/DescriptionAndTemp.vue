@@ -16,14 +16,14 @@
       <div :class="styles.temp">{{getTempComputed.currentTemp}}&deg;</div>
       <div :class="styles.units">
         <div
-            :class="`${styles.celc} ${unitFC === 'f' && styles.notCurrent}`"
-            @click="setUnitFCMethod"
+          :class="`${styles.celc} ${unitFC === 'f' && styles.notCurrent}`"
+          @click="setUnitFCMethod"
         >
           C
         </div>
         <div
-            :class="`${styles.faren} ${unitFC === 'c' && styles.notCurrent}`"
-            @click="setUnitFCMethod"
+          :class="`${styles.faren} ${unitFC === 'c' && styles.notCurrent}`"
+          @click="setUnitFCMethod"
         >
           F
         </div>
