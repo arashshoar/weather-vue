@@ -4,8 +4,12 @@ import { mount } from '@vue/test-utils'
 describe("When we are testing LocationIcon component", () => {
 
   const wrapper = mount(LocationIcon, {
-    propsData: {
-      class: 'locationIcon'
+    data() {
+      return {
+        styles: {
+          locationIcon: 'locationIcon'
+        }
+      }
     }
   })
 

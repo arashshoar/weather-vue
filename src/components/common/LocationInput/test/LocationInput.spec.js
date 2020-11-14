@@ -14,15 +14,25 @@ jest.mock('../../../../api/api', () => {
 
 describe('When we are testing LocationInput component', () => {
 
-  let wrapper = mount(LocationInput)
+  let wrapper = mount(LocationInput, {
+    data() {
+      return {
+        styles: {
+          locationInput: 'locationInput'
+        }
+      }
+    }
+  })
   const flushPromise = () => new Promise(resolve => setTimeout(resolve, 0))
   wrapper.vm.$store = {
     dispatch: jest.fn(fn => fn)
   }
 
-  it('It should have a proper structure', async () => {
-    await flushPromise()
-    expect(wrapper.html()).toMatchSnapshot()
+  it('It should have a proper structure', () => {
+    expect(wrapper.findAll('input')).toHaveLength(1)
+    expect(wrapper.findAll('button')).toHaveLength(1)
+    expect(wrapper.text()).toBe('Search')
+    expect(wrapper.findAll('input-group.md-3.locationInput'))
   })
 
   it('When input has to be empty at first', () => {

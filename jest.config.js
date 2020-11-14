@@ -11,5 +11,5 @@ module.exports = {
   },
   collectCoverage: true,
   collectCoverageFrom: ["**/*.{js,vue}", "!**/node_modules/**"],
-  testMatch: ['**/*.spec.[jt]s?(x)']
+  testMatch: ['**/*.spec.[jt]s?(x)', "**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"]
 }

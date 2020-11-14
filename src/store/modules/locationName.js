@@ -1,22 +1,22 @@
 const state = {
-  LocationName: {
+  locationName: {
     cityName: 'New York',
     countryName: 'United Stats',
   }
 }
 
 const getters = {
-  getLocationName: state => state.LocationName
+  getLocationName: state => state.locationName
 }
 
 export const actions = {
-  setLocationName: ({commit}, LocationName) => {
-    commit('mutateLocationName', LocationName)
+  setLocationName: ({commit}, locationName) => {
+    commit('mutateLocationName', locationName)
   }
 }
 
 const mutations = {
-  mutateLocationName: (state, LocationName) => state.LocationName = LocationName
+  mutateLocationName: (state, locationName) => state.locationName = locationName
 }
 
 export default {
