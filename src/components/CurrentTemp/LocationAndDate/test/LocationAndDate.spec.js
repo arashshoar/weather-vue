@@ -48,7 +48,6 @@ describe('When we are testing the LocationAndDate component', () => {
   })
 
   it('should shows the passed cityName props', () => {
-    expect(wapper.html()).toMatchSnapshot()
     expect(wapper.text().match(/New York/gi)).toHaveLength(1)
   })
 

@@ -55,7 +55,7 @@ export default {
     handleChangeLocationList(event) {
       event.preventDefault()
       const coords = event.target.dataset.coords
-      console.log('Coords: ', coords)
+
       const { latitude, longitude } = getLatLngFromCoords(coords)
       getWholeData({
         latitude,
