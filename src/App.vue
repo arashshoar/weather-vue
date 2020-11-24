@@ -14,7 +14,7 @@
       AdvertisementSecondary
     </div>
     <div :class="styles.componentsSetOne">
-      Wind
+      <Wind></Wind>
     </div>
     <div :class="styles.componentsSetTwo">
       SunMoon
@@ -24,12 +24,15 @@
 
 <script>
 import CurrentTemp from '@/components/CurrentTemp/CurrentTemp'
+import Wind from '@/components/Wind/Wind'
+
 import styles from './App.module.scss'
 
 export default {
   name: 'App',
   components: {
-    CurrentTemp
+    CurrentTemp,
+    Wind,
   },
   data() {
     return ({
