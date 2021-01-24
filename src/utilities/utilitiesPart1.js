@@ -282,3 +282,18 @@ export const getApplicationBackground = () => {
     document.querySelector('[class*="CurrentTemp_currentTemp"]').style.minHeight = `${document.documentElement.clientHeight}px`
   }
 }
+
+export const getQuarter = ({ sunRise, sunSet, dt }) => {
+  const sunRiseMilliSeconds = Number(sunRise + '000')
+  const sunSetMilliSeconds = Number(sunSet + '000')
+  const currentMilliSeconds = Number(dt + '000')
+  const dayQuarter = (sunRiseMilliSeconds - currentMilliSeconds) / (sunRiseMilliSeconds - sunSetMilliSeconds)
+
+  return Math.round(dayQuarter * 100) / 100
+}
+
+export const getDayHours = (sunRise, sunSet) => {
+  const hours = Math.round(((sunSet + '000') - (sunRise + '000')) / 360000) / 10
+
+  return isNaN(hours) ? 'Loading' : hours
+}

@@ -32,15 +32,15 @@ import styles from './Wind.module.scss'
 
 export default {
   name: 'Wind',
+  components: {
+    WindGen,
+    GadgetContainer,
+  },
   data() {
     return ({
       styles,
       cardTitle: "Wind & Pressure",
     })
-  },
-  components: {
-    WindGen,
-    GadgetContainer,
   },
   computed: {
     ...mapGetters(['getCurrentWeatherData']),

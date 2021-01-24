@@ -17,7 +17,7 @@
       <Wind></Wind>
     </div>
     <div :class="styles.componentsSetTwo">
-      SunMoon
+      <SunMoon></SunMoon>
     </div>
   </div>
 </template>
@@ -25,6 +25,7 @@
 <script>
 import CurrentTemp from '@/components/CurrentTemp/CurrentTemp'
 import Wind from '@/components/Wind/Wind'
+import SunMoon from '@/components/SunMoon/SunMoon'
 
 import styles from './App.module.scss'
 
@@ -33,6 +34,7 @@ export default {
   components: {
     CurrentTemp,
     Wind,
+    SunMoon,
   },
   data() {
     return ({
