@@ -1,7 +1,7 @@
 <template>
   <div :class="styles.app" id="app">
     <div :class="styles.asideContainer">
-        Aside
+      Aside
     </div>
     <div :class="styles.currentTempContainer">
 
@@ -15,6 +15,8 @@
     </div>
     <div :class="styles.componentsSetOne">
       <Wind></Wind>
+      <Details></Details>
+      <div><h1>Salam</h1></div>
     </div>
     <div :class="styles.componentsSetTwo">
       <SunMoon></SunMoon>
@@ -26,6 +28,7 @@
 import CurrentTemp from '@/components/CurrentTemp/CurrentTemp'
 import Wind from '@/components/Wind/Wind'
 import SunMoon from '@/components/SunMoon/SunMoon'
+import Details from '@/components/Details/Details'
 
 import styles from './App.module.scss'
 
@@ -35,6 +38,7 @@ export default {
     CurrentTemp,
     Wind,
     SunMoon,
+    Details,
   },
   data() {
     return ({

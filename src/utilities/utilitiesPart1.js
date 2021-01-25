@@ -297,3 +297,33 @@ export const getDayHours = (sunRise, sunSet) => {
 
   return isNaN(hours) ? 'loading' : hours
 }
+
+export const meterToMiles = meter => Math.round(meter / 1609 * 10) / 10
+
+export const meterPerSecToMph = meterPerSec => Math.round(meterPerSec * 2.237 * 10) / 10
+
+export const meterPerSecToKph = meterPerSec => Math.round(meterPerSec * 3.6 * 10) / 10
+
+export const getWindDir = degree => {
+  degree = degree % 360
+  switch (true) {
+    case (degree < 22.5 || degree >= 337.5):
+      return 'North'
+    case (degree > 22.5 && degree <= 67.5):
+      return 'NW'
+    case (degree > 67.5 && degree <= 112.5):
+      return 'West'
+    case (degree > 112.5 && degree <= 157.5):
+      return 'SW'
+    case (degree > 157.5 && degree <= 202.5):
+      return 'South'
+    case (degree > 202.5 && degree <= 247.5):
+      return 'SE'
+    case (degree > 247.5 && degree <= 292.5):
+      return 'East'
+    case (degree > 292.5 && degree < 337.5):
+      return 'NE'
+    default:
+      return 'not a degree'
+  }
+}

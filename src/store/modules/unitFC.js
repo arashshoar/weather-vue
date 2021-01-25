@@ -7,7 +7,7 @@ const getters = {
 }
 
 export const actions = {
-  setUnitFC: ({commit}, unitFC) => {
+  setUnitFC: ({ commit }, unitFC) => {
     commit('mutateUnitFC', unitFC)
   }
 }
