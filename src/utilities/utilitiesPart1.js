@@ -295,5 +295,5 @@ export const getQuarter = ({ sunRise, sunSet, dt }) => {
 export const getDayHours = (sunRise, sunSet) => {
   const hours = Math.round(((sunSet + '000') - (sunRise + '000')) / 360000) / 10
 
-  return isNaN(hours) ? 'Loading' : hours
+  return isNaN(hours) ? 'loading' : hours
 }
