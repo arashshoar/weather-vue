@@ -31,8 +31,8 @@ import { mapGetters } from 'vuex'
 
 import { getDayHours, getTimeFromMilliSeconds, getQuarter, getIfItIsDay } from '../../utilities/utilitiesPart1'
 import GadgetContainer from '../common/GadgetContainer/GadgetContainer'
-import SunLocation from './SunLocation'
-import WeatherIcon from './WeatherIcon'
+import SunLocation from './SunLocation/SunLocation'
+import WeatherIcon from './WeatherIcon/WeatherIcon'
 
 import styles from './SunMoon.module.scss'
 

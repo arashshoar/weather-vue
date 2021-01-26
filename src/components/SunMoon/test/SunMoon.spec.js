@@ -4,8 +4,8 @@ import Vuex from 'vuex'
 
 import SunMoon from '../SunMoon'
 import store from '../../../store/index'
-import WeatherIcon from '../WeatherIcon'
-import SunLocation from '../SunLocation'
+import WeatherIcon from '../WeatherIcon/WeatherIcon'
+import SunLocation from '../SunLocation/SunLocation'
 
 Vue.use(Vuex)
 

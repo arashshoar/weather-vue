@@ -63,7 +63,7 @@
 <script>
 import { SRC } from '../../../utilities/constants'
 
-import styles from '../SunMoon.module.scss'
+import styles from './SunLocation.module.scss'
 
 export default {
   name: 'SunLocation',

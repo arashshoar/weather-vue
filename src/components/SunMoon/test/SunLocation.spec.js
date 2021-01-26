@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import SunLocation from '../SunLocation'
+import SunLocation from '../SunLocation/SunLocation'
 
 describe('When we are testing the SunLocation component', () => {
   const wrapper = mount(SunLocation, {

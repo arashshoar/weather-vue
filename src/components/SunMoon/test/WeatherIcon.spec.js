@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import WeatherIcon from '../WeatherIcon'
+import WeatherIcon from '../WeatherIcon/WeatherIcon'
 
 describe('When we are testing the LocationAndDate component', () => {
 

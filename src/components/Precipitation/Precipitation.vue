@@ -35,7 +35,7 @@ import { mapGetters } from 'vuex'
 
 import { getPrecipitationIcon, getPrecipitationIconData } from '../../utilities/utilitiesPart1'
 import GadgetContainer from '../common/GadgetContainer/GadgetContainer'
-import PrecipitationCell from './PrecipitationCell'
+import PrecipitationCell from './PrecipitationCell/PrecipitationCell'
 
 import styles from './Precipitation.module.scss'
 
@@ -47,7 +47,7 @@ export default {
   },
   data() {
     return {
-      cardTitle: "Sun & Moon",
+      cardTitle: "Precipitation",
       styles,
     }
   },

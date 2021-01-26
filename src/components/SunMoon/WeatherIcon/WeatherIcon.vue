@@ -1,15 +1,13 @@
 <template>
   <div :class="styles.moonIconContainer">
-    <div :class="styles.svgContainer">
       <img :src="getWeatherIcon" alt="" />
-    </div>
   </div>
 </template>
 
 <script>
 import { getWeatherIcon, getIfItIsDay } from '../../../utilities/utilitiesPart1'
 
-import styles from '../SunMoon.module.scss'
+import styles from './WeatherIcon.module.scss'
 
 export default {
   name: 'WeatherIcon',
