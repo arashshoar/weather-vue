@@ -54,8 +54,8 @@ export default {
     getTempComputed() {
       return {
         currentTemp: getTemp(this.unitFC, this.currentTemp),
-        minTemp: getTemp(this.unitFC, this.maxTemp),
-        maxTemp: getTemp(this.unitFC, this.minTemp),
+        minTemp: getTemp(this.unitFC, this.minTemp),
+        maxTemp: getTemp(this.unitFC, this.maxTemp),
       }
     },
   },
