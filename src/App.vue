@@ -20,6 +20,7 @@
     </div>
     <div :class="styles.componentsSetTwo">
       <SunMoon></SunMoon>
+      <Precipitation></Precipitation>
     </div>
   </div>
 </template>
@@ -29,6 +30,7 @@ import CurrentTemp from '@/components/CurrentTemp/CurrentTemp'
 import Wind from '@/components/Wind/Wind'
 import SunMoon from '@/components/SunMoon/SunMoon'
 import Details from '@/components/Details/Details'
+import Precipitation from '@/components/Precipitation/Precipitation'
 
 import styles from './App.module.scss'
 
@@ -39,6 +41,7 @@ export default {
     Wind,
     SunMoon,
     Details,
+    Precipitation,
   },
   data() {
     return ({

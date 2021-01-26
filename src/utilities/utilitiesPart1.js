@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { SRC } from './constants'
+import { SRC, weatherConditions } from './constants'
 import { backgroundSrcSets } from './backgroundPathes'
 
 export const getUserCurrentPosition = options => (
@@ -380,3 +380,29 @@ export const getPrecipitationIconData = forecastWeatherData => {
 
   return result
 }
+
+export const getPrecipitationIcon = description => {
+  const { lightRain, moderateRain, heavyRain, veryHeavyRain, extremeRain, lightRainAndSnow, snow, thunderstorm } = weatherConditions
+
+  switch (true) {
+    case (lightRain.includes(description)):
+      return SRC.rainIcon20
+    case (moderateRain.includes(description)):
+      return SRC.rainIcon40
+    case (heavyRain.includes(description)):
+      return SRC.rainIcon60
+    case (veryHeavyRain.includes(description)):
+      return SRC.rainIcon80
+    case (extremeRain.includes(description)):
+      return SRC.rainIcon100
+    case (lightRainAndSnow.includes(description)):
+      return SRC.lightRainAndSnow
+    case (snow.includes(description)):
+      return SRC.snow
+    case (thunderstorm.includes(description)):
+      return SRC.thunderstorm
+    default:
+      return SRC.rainIcon0
+  }
+}
+
