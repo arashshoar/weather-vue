@@ -5,12 +5,17 @@
 </template>
 
 <script>
+import { getPrecipitationIcon, getPrecipitationIconData } from '../../utilities/utilitiesPart1'
+
+import styles from './Precipitation.module.scss'
+
+
 export default {
-  name: 'HelloWorld',
+  name: 'Precipitation',
+  data() {
+    return {
+      styles
+    }
+  },
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-
-</style>

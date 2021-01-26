@@ -48,7 +48,7 @@ export default {
   },
   components: { LocationInput, LocationIcon },
   methods: {
-    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setLocationName']),
+    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setForecastWeatherData', 'setLocationName']),
     getPlaceDescriptionMethod(placeName) {
       return getPlaceDescription(placeName)
     },
@@ -63,6 +63,7 @@ export default {
         setCoords: this.setCoords,
         setMapData: this.setMapData,
         setCurrentWeatherData: this.setCurrentWeatherData,
+        setForecastWeatherData: this.setForecastWeatherData,
         setLocationName: this.setLocationName,
       })
     }

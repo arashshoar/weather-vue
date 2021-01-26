@@ -6,6 +6,7 @@ import locationName from './modules/locationName'
 import unitFC from './modules/unitFC'
 import mapData from './modules/mapData'
 import currentWeatherData from './modules/currentWeatherData'
+import forecastWeatherData from './modules/forecastWeatherData'
 
 Vue.use(Vuex)
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     locationName,
     mapData,
     currentWeatherData,
+    forecastWeatherData,
     unitFC,
   }
 })

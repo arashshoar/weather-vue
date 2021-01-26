@@ -327,3 +327,56 @@ export const getWindDir = degree => {
       return 'not a degree'
   }
 }
+
+export const increaseQuantityInHashTable = (hash, elem, rain) => {
+  const hashTable = { ...hash }
+  if(hashTable.maxCount < hashTable.hashData[elem] + 1) {
+    hashTable.maxKey = elem
+    hashTable.rain = rain
+    hashTable.maxCount = hashTable.hashData[elem] + 1
+  }
+  hashTable.hashData[elem] += 1
+
+  return hashTable
+}
+
+export const newElementForHashTable = (hash, elem, rain) => {
+  const hashTable = { ...hash }
+  if (!hashTable.maxCount) {
+    hashTable.maxCount = 1
+    hashTable.maxKey = elem
+    hashTable.rain = rain
+  }
+  hashTable.hashData[elem] = 1
+
+  return hashTable
+}
+
+export const getQuarterWeatherDescription = (from, hourly) => {
+  let hash = {
+    maxKey: undefined,
+    rain: 0,
+    maxCount: 0,
+    hashData: {}
+  }
+
+  for (let i = from; i < from + 6; i++) {
+    let desc = hourly[i] && hourly[i].weather[0] && hourly[i].weather[0].description
+    let rain = hourly[i] && hourly[i].rain && hourly[i].rain['1h'] ? hourly[i].rain['1h'] : 0
+    hash = hash.hashData[desc] ? { ...increaseQuantityInHashTable(hash, desc, rain) } : { ...newElementForHashTable(hash, desc, rain) }
+  }
+
+  return hash
+}
+
+export const getPrecipitationIconData = forecastWeatherData => {
+  const result = {}
+  const { hourly } = forecastWeatherData
+
+  result.firstQuarterDesc = getQuarterWeatherDescription(0, hourly)
+  result.secondQuarterDesc = getQuarterWeatherDescription(6, hourly)
+  result.thirdQuarterDesc = getQuarterWeatherDescription(12, hourly)
+  result.forthQuarterDesc = getQuarterWeatherDescription(18, hourly)
+
+  return result
+}

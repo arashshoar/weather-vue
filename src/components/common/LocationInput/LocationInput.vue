@@ -33,7 +33,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setLocationName']),
+    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setForecastWeatherData', 'setLocationName']),
     handleSearchButtonClick: async function() {
 
       const { data: { features: [{ center: [longitude, latitude] }] } } = await fetchMapData({locationName: this.locationNameInput})
@@ -44,6 +44,7 @@ export default {
         setMapData: this.setMapData,
         setCurrentWeatherData: this.setCurrentWeatherData,
         setLocationName: this.setLocationName,
+        setForecastWeatherData: this.setForecastWeatherData,
       })
     },
     handleKeyDown: async function() {

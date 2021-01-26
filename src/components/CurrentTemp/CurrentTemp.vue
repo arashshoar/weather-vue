@@ -49,7 +49,7 @@ export default ({
     })
   },
   methods: {
-    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setUnitFC', 'setLocationName']),
+    ...mapActions(['setCoords', 'setMapData', 'setCurrentWeatherData', 'setForecastWeatherData', 'setUnitFC', 'setLocationName']),
   },
   computed: {
     ...mapGetters(['getCoords', 'getMapData', 'getCurrentWeatherData', 'getUnitFC', 'getLocationName']),
@@ -90,6 +90,7 @@ export default ({
       setCoords: this.setCoords,
       setMapData: this.setMapData,
       setCurrentWeatherData: this.setCurrentWeatherData,
+      setForecastWeatherData: this.setForecastWeatherData,
       setUnitFC: this.setUnitFC,
       setLocationName: this.setLocationName
     })
