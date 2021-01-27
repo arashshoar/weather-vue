@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { SRC, weatherConditions } from './constants'
 import { backgroundSrcSets } from './backgroundPathes'
+import { getGoogleMapDarkStyles } from './googleMapDarkStyles'
+
 
 export const getUserCurrentPosition = options => (
   new Promise(function (resolve, reject) {
@@ -417,3 +419,27 @@ export const getDay = (milli, timeZone) => {
   const date = new Date(Number(milli + '000') + Number(timeZone + '000'))
   return weekDays[date.getDay()]
 }
+
+
+export const initMapFunctionString = ({ lat, lng }) => (
+  `function initMap() {
+    // The location base on our coordinates
+    var center = { lat: ${lat}, lng: ${lng} };
+    // The map, centered at our location
+    var map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 14,
+      center: center,
+      styles: ${JSON.stringify(getGoogleMapDarkStyles())},
+    });
+    // The marker, positioned at our location
+    var marker = new google.maps.Marker({ position: center, map: map });
+  }`
+)
+
+export const removeOldScriptElement = id => {
+  const oldElemScript = document.getElementById(id)
+  if (oldElemScript) {
+    oldElemScript.remove()
+  }
+}
+

@@ -21,7 +21,6 @@ describe('When we are testing the SunMoon component', () => {
     }
   })
 
-
   it('should contains one table container element', () => {
     expect(wrapper.findAll('.table')).toHaveLength(1)
   })

@@ -16,6 +16,7 @@
     <div :class="styles.componentsSetOne">
       <Wind></Wind>
       <Details></Details>
+      <GoogleMap></GoogleMap>
     </div>
     <div :class="styles.componentsSetTwo">
       <SunMoon></SunMoon>
@@ -32,6 +33,7 @@ import SunMoon from '@/components/SunMoon/SunMoon'
 import Details from '@/components/Details/Details'
 import Precipitation from '@/components/Precipitation/Precipitation'
 import Forecast from '@/components/Forecast/Forecast'
+import GoogleMap from '@/components/GoogleMap/GoogleMap'
 
 import styles from './App.module.scss'
 
@@ -44,6 +46,7 @@ export default {
     Details,
     Precipitation,
     Forecast,
+    GoogleMap,
   },
   data() {
     return ({
