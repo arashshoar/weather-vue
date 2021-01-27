@@ -406,3 +406,14 @@ export const getPrecipitationIcon = description => {
   }
 }
 
+export const getHourAMPM = time => {
+  const hour = Number(time.split(':')[0])
+
+  return hour > 12 ? `${hour - 12} PM` : `${hour} ${hour === 12 ? 'PM' : 'AM'}`
+}
+
+export const getDay = (milli, timeZone) => {
+  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday', 'Friday', 'Saturday']
+  const date = new Date(Number(milli + '000') + Number(timeZone + '000'))
+  return weekDays[date.getDay()]
+}

@@ -11,7 +11,6 @@ Vue.use(Vuex)
 
 const flushPromise = () => new Promise(resolve => setTimeout(resolve, 0))
 
-
 describe('When we are testing the SunMoon component', () => {
 
   const wrapper = mount(SunMoon, {

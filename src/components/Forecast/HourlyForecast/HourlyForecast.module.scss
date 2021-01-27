@@ -1,0 +1,16 @@
+.table {
+  max-width: 100%;
+  display: flex;
+  overflow-y: auto;
+
+  .cell {
+    & > div {
+      padding: 3px 10px;
+      font-size: 0.7rem;
+
+      img {
+        max-width: 34px;
+      }
+    }
+  }
+}
