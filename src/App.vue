@@ -8,7 +8,7 @@
       <CurrentTemp></CurrentTemp>
     </div>
     <div :class="styles.links">
-      Advertisement
+      <Advertisement></Advertisement>
     </div>
     <div :class="styles.addSecondary">
       AdvertisementSecondary
@@ -35,6 +35,7 @@ import Precipitation from '@/components/Precipitation/Precipitation'
 import Forecast from '@/components/Forecast/Forecast'
 import GoogleMap from '@/components/GoogleMap/GoogleMap'
 import Aside from '@/components/Aside/Aside.vue'
+import Advertisement from '@/components/Advertisement/Advertisement.vue'
 
 import styles from './App.module.scss'
 
@@ -49,6 +50,7 @@ export default {
     Forecast,
     GoogleMap,
     Aside,
+    Advertisement,
   },
   data() {
     return ({
