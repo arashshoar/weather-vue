@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import HourlyForecast from '../HourlyForecast'
 import { forecastWeatherDataForAxios } from '../../../../utilities/test-utilities/forecastWeatherDataForAxios'
 
-describe('When we are testing the SunMoon component', () => {
+describe('When we are testing the HourlyForecast component', () => {
   const wrapper = mount(HourlyForecast, {
     data() {
       return {

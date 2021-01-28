@@ -7,7 +7,7 @@ import store from '../../../store/index'
 
 Vue.use(Vuex)
 
-describe('When we are testing the SunMoon component', () => {
+describe('When we are testing the Details component', () => {
   const wrapper = mount(Details, {
     data() {
       return {

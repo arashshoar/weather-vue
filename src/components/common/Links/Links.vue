@@ -50,11 +50,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faAddressCard, faUsers, faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faGithub, faLinkedin, faAddressCard, faUsers, faClipboardCheck)
-
 import LinkItem from '../LinkItem/LinkItem.vue'
 
 import styles from './Links.module.scss'
+
+library.add(faGithub, faLinkedin, faAddressCard, faUsers, faClipboardCheck)
 
 export default {
   name: 'HelloWorld',

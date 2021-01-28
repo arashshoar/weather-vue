@@ -5,7 +5,7 @@ import store from '../../../store/index'
 import HourlyForecast from '../HourlyForecast/HourlyForecast'
 import DailyForecast from '../DailyForecast/DailyForecast'
 
-describe('When we are testing the SunMoon component', () => {
+describe('When we are testing the Forecast component', () => {
   const wrapper = mount(Forecast, {
     data() {
       return {

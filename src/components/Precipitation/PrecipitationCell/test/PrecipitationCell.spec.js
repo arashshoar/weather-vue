@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 
 import PrecipitationCell from '../PrecipitationCell'
 
-describe('When we are testing the SunMoon component', () => {
+describe('When we are testing the PrecipitationCell component', () => {
 
   const wrapper = mount(PrecipitationCell, {
     data() {

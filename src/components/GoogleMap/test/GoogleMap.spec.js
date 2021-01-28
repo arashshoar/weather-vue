@@ -5,7 +5,7 @@ import GadgetContainer from '../../common/GadgetContainer/GadgetContainer'
 
 import store from '../../../store/index'
 
-describe('When we are testing the SunMoon component', () => {
+describe('When we are testing the GoogleMap component', () => {
   const rootElement = document.createElement('div')
   rootElement.setAttribute('id', 'app')
   document.body.append(rootElement)

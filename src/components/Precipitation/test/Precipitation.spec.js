@@ -9,7 +9,7 @@ import PrecipitationCell from '../PrecipitationCell/PrecipitationCell'
 
 Vue.use(Vuex)
 
-describe('When we are testing the SunMoon component', () => {
+describe('When we are testing the Precipitation component', () => {
 
   const wrapper = mount(Precipitation, {
     data() {
