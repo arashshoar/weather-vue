@@ -1,7 +1,7 @@
 <template>
   <div :class="styles.app" id="app">
     <div :class="styles.asideContainer">
-      Aside
+      <Aside></Aside>
     </div>
     <div :class="styles.currentTempContainer">
 
@@ -34,6 +34,7 @@ import Details from '@/components/Details/Details'
 import Precipitation from '@/components/Precipitation/Precipitation'
 import Forecast from '@/components/Forecast/Forecast'
 import GoogleMap from '@/components/GoogleMap/GoogleMap'
+import Aside from '@/components/Aside/Aside.vue'
 
 import styles from './App.module.scss'
 
@@ -47,6 +48,7 @@ export default {
     Precipitation,
     Forecast,
     GoogleMap,
+    Aside,
   },
   data() {
     return ({

@@ -1,0 +1,14 @@
+@import "@/utilities/design-utilities/sass-variables";
+
+.links {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 0.7rem;
+  overflow-y: auto;
+
+  @media only screen and (min-width: $xlBreakPoint) {
+    overflow-y: unset;
+    flex-direction: column;
+    padding-top: 30px;
+  }
+}
