@@ -1,8 +1,8 @@
 <template>
   <div>
+    <AddSecondaryItem :img="reduxImgSrc" ></AddSecondaryItem>
     <AddSecondaryItem :img="tddImgSrc" ></AddSecondaryItem>
     <AddSecondaryItem :img="functionImgSrc" ></AddSecondaryItem>
-    <AddSecondaryItem :img="reduxImgSrc" ></AddSecondaryItem>
   </div>
 </template>
 

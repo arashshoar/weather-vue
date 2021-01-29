@@ -9,6 +9,13 @@
     />
     <LinkItem
       :icon="['fab', 'github']"
+      :linkHref="'https://github.com/arashshoar/weather-vue'"
+      :linkText="'Review'"
+      :linkLine1="'Vue-Vuex'"
+      :linkLine2="'Weather App'"
+    />
+    <LinkItem
+      :icon="['fab', 'github']"
       :linkHref="'https://github.com/arashshoar/weather-redux-thunk'"
       :linkText="'Review'"
       :linkLine1="'Redux-Saga'"
