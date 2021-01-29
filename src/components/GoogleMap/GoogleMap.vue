@@ -1,6 +1,6 @@
 <template>
   <GadgetContainer cardTitle="Map">
-    <div id="map" :class="styles.googleMap"></div>
+    <div id="map" :class="styles.googleMap" :salam="gMapState.lat"></div>
   </GadgetContainer>
 </template>
 
@@ -55,12 +55,16 @@ export default {
     }
   },
   updated() {
-    this.loadScriptInintMap()
-    this.loadScript()
+    if (this.gMapState.lng && this.gMapState.lat) {
+      this.loadScriptInintMap()
+      this.loadScript()
+    }
   },
   created() {
-    this.loadScriptInintMap()
-    this.loadScript()
+    if (this.gMapState.lng && this.gMapState.lat) {
+      this.loadScriptInintMap()
+      this.loadScript()
+    }
   }
 }
 </script>

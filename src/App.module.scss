@@ -23,27 +23,22 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0 10px;
-    border: solid 1px red;
   }
 
   .links {
     grid-area: links;
-    border: solid 1px blue;
   }
 
   .componentsSetOne {
     grid-area: componentsSetOne;
-    border: solid 1px darkgreen;
   }
 
   .componentsSetTwo {
     grid-area: componentsSetTwo;
-    border: solid 1px orangered;
   }
 
   .addSecondary{
     grid-area: addSecondary;
-    border: solid 1px maroon;
   }
 
   @media only screen and (min-width: $smBreakPoint ) {

@@ -11,7 +11,7 @@
       <Advertisement></Advertisement>
     </div>
     <div :class="styles.addSecondary">
-      AdvertisementSecondary
+      <AdvertisementSecondary></AdvertisementSecondary>
     </div>
     <div :class="styles.componentsSetOne">
       <Wind></Wind>
@@ -34,8 +34,9 @@ import Details from '@/components/Details/Details'
 import Precipitation from '@/components/Precipitation/Precipitation'
 import Forecast from '@/components/Forecast/Forecast'
 import GoogleMap from '@/components/GoogleMap/GoogleMap'
-import Aside from '@/components/Aside/Aside.vue'
-import Advertisement from '@/components/Advertisement/Advertisement.vue'
+import Aside from '@/components/Aside/Aside'
+import AdvertisementSecondary from '@/components/AdvertisementSecondary/AdvertisementSecondary'
+import Advertisement from '@/components/Advertisement/Advertisement'
 
 import styles from './App.module.scss'
 
@@ -51,6 +52,7 @@ export default {
     GoogleMap,
     Aside,
     Advertisement,
+    AdvertisementSecondary,
   },
   data() {
     return ({
