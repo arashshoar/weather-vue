@@ -1,6 +1,6 @@
 <template>
   <div :class="styles.linkItem">
-    <font-awesome-icon :icon="icon" />
+    <FontAwesomeIcon :icon="icon" />
     <a :href="linkHref" target="_blank">{{linkText}}</a>
     <div>{{linkLine1}}</div>
     <div>{{linkLine2}}</div>
@@ -10,9 +10,11 @@
 <script>
 
 import styles from './LinkItem.module.scss'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
   name: 'LinkItem',
+  components: { FontAwesomeIcon },
   data() {
     return {
       styles

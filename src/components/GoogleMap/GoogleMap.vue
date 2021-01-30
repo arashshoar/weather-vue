@@ -1,6 +1,6 @@
 <template>
   <GadgetContainer cardTitle="Map">
-    <div id="map" :class="styles.googleMap" :salam="gMapState.lat"></div>
+    <div id="map" :class="styles.googleMap"></div>
   </GadgetContainer>
 </template>
 
@@ -19,6 +19,16 @@ export default {
     return ({
       styles
     })
+  },
+  watch: {
+    gMapState(value, oldValue) {
+      const { lat, lng } = value
+      const { lat: oldLat, lng: oldLng} = oldValue
+      if (lat !== oldLat) {
+        this.loadScriptInintMap()
+        this.loadScript()
+      }
+    }
   },
   computed: {
     ...mapGetters(['getCoords']),
@@ -54,17 +64,5 @@ export default {
       rootElement.append(script)
     }
   },
-  updated() {
-    if (this.gMapState.lng && this.gMapState.lat) {
-      this.loadScriptInintMap()
-      this.loadScript()
-    }
-  },
-  created() {
-    if (this.gMapState.lng && this.gMapState.lat) {
-      this.loadScriptInintMap()
-      this.loadScript()
-    }
-  }
 }
 </script>

@@ -8,6 +8,13 @@
       :linkLine2="'Resume'"
     />
     <LinkItem
+      :icon="['fab', 'react']"
+      :linkHref="'https://arashshoar-weather-redux-thunk.herokuapp.com/'"
+      :linkText="'React Version'"
+      :linkLine1="'Vue-Vuex'"
+      :linkLine2="'Weather App'"
+    />
+    <LinkItem
       :icon="['fab', 'github']"
       :linkHref="'https://github.com/arashshoar/weather-vue'"
       :linkText="'Review'"
@@ -54,14 +61,14 @@
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faAddressCard, faUsers, faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
+import { faLinkedin, faGithub, faReact } from '@fortawesome/free-brands-svg-icons'
+import { faAddressCard, faUsers, faClipboardCheck, faCloudSunRain } from '@fortawesome/free-solid-svg-icons'
 
 import LinkItem from '../LinkItem/LinkItem.vue'
 
 import styles from './Links.module.scss'
 
-library.add(faGithub, faLinkedin, faAddressCard, faUsers, faClipboardCheck)
+library.add(faGithub, faLinkedin, faAddressCard, faUsers, faClipboardCheck, faCloudSunRain, faReact)
 
 export default {
   name: 'HelloWorld',
